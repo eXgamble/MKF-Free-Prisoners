@@ -40,7 +40,7 @@ Without the framework the prisoner keeps vanilla's message box.
 
 `MKF - Free Prisoners.esp` (ESL): the faction, the dialogue quest and its four lines, the Slow Time effect and spell.
 The four lines are voiced in the male Nord voice (both prisoner records are male Nords), made with an ElevenLabs
-voice clone of the vanilla MaleNord voice: `tools/voice.py` writes `mod/Sound/Voice/MKF - Free Prisoners.esp/MaleNord/`.
+voice clone of the vanilla MaleNord voice: the voice-lines skill's script reads `tools/voice_lines.json` (words, delivery tags, voice type) and writes `mod/Sound/Voice/MKF - Free Prisoners.esp/MaleNord/`.
 AI-generated voice: the Nexus page carries the AI-Generated Content tag and credits ElevenLabs.
 
 ## Vanilla behaviour, for reference

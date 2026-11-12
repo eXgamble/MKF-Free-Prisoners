@@ -1,0 +1,14 @@
+{
+ "mod": "../mod",
+ "plugin": "MKF - Free Prisoners.esp",
+ "lines": [
+  {"quest": "MKFFP_DialogueQuest", "topic": "MKFFP_PleadTopic", "info": "000804", "voice_types": ["MaleNord"],
+   "responses": [{"n": 1, "tags": "[whispers] [urgent]", "text": "Please... cut me loose. I'll fight beside you."}]},
+  {"quest": "MKFFP_DialogueQuest", "topic": "MKFFP_PleadTopic", "info": "000805", "voice_types": ["MaleNord"],
+   "responses": [{"n": 1, "tags": "[whispers] [urgent]", "text": "Psst. Over here. Get these ropes off me, quick."}]},
+  {"quest": "MKFFP_DialogueQuest", "topic": "MKFFP_PleadTopic", "info": "000806", "voice_types": ["MaleNord"],
+   "responses": [{"n": 1, "tags": "[relieved] [tired]", "text": "Thank the gods. Untie me, please."}]},
+  {"quest": "MKFFP_DialogueQuest", "topic": "MKFFP_PleadTopic", "info": "000807", "voice_types": ["MaleNord"],
+   "responses": [{"n": 1, "tags": "[surprised] [urgent]", "text": "They're dead? Then cut me loose, quickly."}]}
+ ]
+}
