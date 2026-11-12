@@ -48,6 +48,10 @@ AI-generated voice: the Nexus page carries the AI-Generated Content tag and cred
 - Vanilla's box: No / Yes / Free and share items, shown when the bound prisoner is activated while alive and not
   in combat. "Share items" opens the prisoner's inventory in gift mode.
 - Hitting the prisoner makes the captors and the player enemies, as before.
+- With the Unofficial Skyrim Special Edition Patch, a prisoner whose captors all die is freed by the patch itself
+  (its "prisoner runs away" packages in both encounters call the same freeing function): they thank you and leave.
+  So the two "captors are dead" pleas are heard only without that patch.
+- The Thalmor warn you off ("Move along") and attack if you linger by their prisoner; that is their own behaviour.
 
 ## Building
 
