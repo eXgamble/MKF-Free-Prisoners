@@ -10,7 +10,7 @@ items). This mod drops the box:
 |---|---|
 | Activate (E / A) | The prisoner pleads, in a whisper while the captors live, plainly once they're dead. No conversation opens |
 | Modifier + Activate | **Free**: the same as vanilla's Yes |
-| Modifier + X (R on a keyboard) | **Free and Give Items**: the same as vanilla's "share items". Their inventory opens so you can arm them, and while it's open the world runs at a quarter speed |
+| Modifier + X (R on a keyboard) | **Free and Give Items**: the same as vanilla's "share items". Their inventory opens on your side, so you can arm them, and while it's open the world runs at a quarter speed |
 
 The actions show only while the prisoner is bound, alive and not in combat, as vanilla's box did, and disappear
 once they're free. Freeing them works as in vanilla: their captors turn on them (and on you), and they thank you.

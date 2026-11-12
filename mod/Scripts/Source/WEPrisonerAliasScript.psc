@@ -156,11 +156,59 @@ Function FreePrisoner(Actor ActorRef, Bool playerIsLiberator = True, Bool OpenIn
 	EndIf
 EndFunction
 
+Event OnMenuOpen(String asMenuName)
+	If asMenuName == "ContainerMenu" && freeingAfterMenu
+		ShowYourSide()
+	EndIf
+EndEvent
+
 Event OnMenuClose(String asMenuName)
 	If asMenuName == "ContainerMenu" && freeingAfterMenu
 		FinishFreeing()
 	EndIf
 EndEvent
+
+; Free and Give Items is for giving: the inventory opens on the player's side, not the prisoner's. Vanilla's category
+; list holds their categories, a divider, then yours: select your first one and show its items. The lists may still be
+; filling as the menu opens, so it looks again for a moment. Another menu skin without that list does nothing here.
+Function ShowYourSide()
+	String menu = "ContainerMenu"
+	String lists = "_root.Menu_mc.InventoryLists_mc"
+	String cats = lists + "._CategoriesList"
+	Int tries = 0
+	While tries < 10 && UI.IsMenuOpen(menu)
+		Int count = UI.GetInt(menu, cats + ".EntriesA.length")
+		Int i = 0
+		Int shown = 0  ; entries the list shows before i: an empty category is hidden unless it's kept
+		While i < count
+			String entry = cats + ".EntriesA." + i
+			If UI.GetBool(menu, entry + ".divider")
+				If i + 1 < count
+					Int[] pick = new Int[2]
+					pick[0] = i + 1
+					pick[1] = 0  ; as a mouse would, so the menu hears of it
+					UI.InvokeIntA(menu, cats + ".doSetSelectedIndex", pick)
+					Int[] place = new Int[2]
+					place[0] = shown + 1  ; the divider is shown too
+					place[1] = 1  ; keep it centred, so the pad steps on from there
+					UI.InvokeIntA(menu, cats + ".RestoreScrollPosition", place)
+					UI.Invoke(menu, cats + ".UpdateList")
+					If UI.GetInt(menu, lists + ".iCurrentState") == 2  ; the items are open: show yours
+						Bool[] quiet = new Bool[2]  ; no sound, no slide
+						UI.InvokeBoolA(menu, lists + ".ShowItemsList", quiet)
+					EndIf
+				EndIf
+				Return
+			EndIf
+			If UI.GetInt(menu, entry + ".filterFlag") != 0 || UI.GetBool(menu, entry + ".bDontHide")
+				shown += 1
+			EndIf
+			i += 1
+		EndWhile
+		Utility.WaitMenuMode(0.05)
+		tries += 1
+	EndWhile
+EndFunction
 
 Function FinishFreeing()
 	freeingAfterMenu = False
