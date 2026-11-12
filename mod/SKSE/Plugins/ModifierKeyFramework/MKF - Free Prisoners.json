@@ -1,0 +1,25 @@
+{
+  // MKF - Free Prisoners: the bound prisoner of the random encounters "Thalmor with Prisoner" and "Imperials with
+  // Stormcloak Prisoner". Activate: the prisoner pleads (no conversation). Modifier key: Free, or Free and Give
+  // Items (their inventory opens). This replaces vanilla's "Free Prisoner?" message box.
+  // Who: members of MKF - Free Prisoners.esp's faction 0x800, which the prisoner's alias script (WEPrisonerAliasScript)
+  // keeps while they're bound and drops once they're free. The same NPC records appear outside these encounters
+  // (the civil war's prisoners), which is why the rule asks for the faction rather than the NPC.
+  // Priority 5: above MKF - Vampire's Feed (1), so Free stays on Activate even for a sneaking vampire.
+  // Labels: Interface/Translations/MKF - Free Prisoners_<LANGUAGE>.txt
+  "version": 8,
+  "rules": [
+    {
+      "id": "boundPrisoner",
+      "target": "npc",
+      "requires": { "faction": "MKF - Free Prisoners.esp|0x800", "alive": true },
+      "not": { "inCombat": true },
+      "primary": { "event": "MKFFP_Plead" },
+      "alternate": [
+        { "label": "$MKFFP_Free", "event": "MKFFP_Free" },
+        { "label": "$MKFFP_FreeAndGiveItems", "event": "MKFFP_Free" }
+      ],
+      "priority": 5
+    }
+  ]
+}
